@@ -11,8 +11,8 @@ void main() {
     3: 2,
   };
 
-  print(gifts);
-  print(nobleGases);
+  // print(gifts);
+  // print(nobleGases);
 
   //tambahan
 
@@ -32,4 +32,7 @@ void main() {
   mhs3['Age'] = '22';
   mhs3['NIM'] = '2341720243';
   mhs3['Prodi'] = 'Teknik Informatika';
+
+  print(mhs3);
+
 }

@@ -6,13 +6,17 @@ void main() {
   print(list2.length);
 
   //tambahan 
-  list1 = [1,2,3];
+  list1 = [1,2,0];
   print(list1);
-  var list3 = [0, ...?list1];
+  var list3 = [0, ...list1];
   print(list3.length);
 
-  //tambahan 2
-  bool promoActive = true;
+  var nim = ['2', '3', '4', '1', '7', '2', '0', '2', '4', '3'];
+  var NimSpreadOperator = [...list3, ...nim];
+  print(NimSpreadOperator);
+
+  // //tambahan 2
+  bool promoActive = false;
   var nav = ['Home', 'Furniture', 'Plants', if (promoActive) 'Outlet'];
   if (promoActive == true) {
     nav = ['Home', 'Furniture', 'Plants', 'Outlet'];
@@ -21,6 +25,12 @@ void main() {
     nav = ['Home', 'Furniture', 'Plants'];
     print(nav);
   }
+
+  // tambahan 3
+  var login = '..';
+  var nav2 = ['Home', 'Furniture', 'Plants', if (login == 'Manager') 'Inventory'];
+  print(nav2);
+
 
   var listOfInts = [1,2,3];
   var listOfStrings = ['#0', for (var i in listOfInts) '#$i'];

@@ -53,23 +53,21 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void showAlertDialog(BuildContext context) {
-    Widget okButton = TextButton(
-      child: const Text("OK"),
-      onPressed: () {
-        Navigator.pop(context);
-      },
-    );
-
-    AlertDialog alert = AlertDialog(
-      title: const Text("My title"),
-      content: const Text("This is my message."),
-      actions: [okButton],
-    );
-
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return alert;
+        return AlertDialog(
+          title: const Text("Hello!"),
+          content: const Text("This is my dialog."),
+          actions: [
+            TextButton(
+              child: const Text("OK"),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        );
       },
     );
   }
@@ -82,150 +80,73 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Colors.blue,
         foregroundColor: Colors.white,
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
+      body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-        
             // Text Widget
-            const Card(
-              child: Padding(
-                padding: EdgeInsets.all(16.0),
-                child: Column(
-                  children: [
-                    Text(
-                      '1. Text Widget:',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(height: 10),
-                    MyTextWidget(),
-                  ],
-                ),
-              ),
+            const Text(
+              'Text Widget:',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
             ),
-            const SizedBox(height: 16),
+            const MyTextWidget(),
+            const SizedBox(height: 20),
 
             // Image Widget
-            const Card(
-              child: Padding(
-                padding: EdgeInsets.all(16.0),
-                child: Column(
-                  children: [
-                    Text(
-                      '2. Image Widget:',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(height: 10),
-                    MyImageWidget(),
-                  ],
-                ),
-              ),
+            const Text(
+              'Image Widget:',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
             ),
-            const SizedBox(height: 16),
+            const MyImageWidget(),
+            const SizedBox(height: 20),
 
             // Counter Widget
-            Card(
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  children: [
-                    const Text(
-                      '3. Counter Widget:',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    const SizedBox(height: 10),
-                    const Text('You have pushed the button this many times:'),
-                    Text(
-                      '$_counter',
-                      style: Theme.of(context).textTheme.headlineMedium,
-                    ),
-                    ElevatedButton(
-                      onPressed: _incrementCounter,
-                      child: const Text('Increment'),
-                    ),
-                  ],
-                ),
-              ),
+            const Text(
+              'Counter Widget:',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
             ),
-            const SizedBox(height: 16),
+            const Text('Push button to count:'),
+            Text(
+              '$_counter',
+              style: Theme.of(context).textTheme.headlineMedium,
+            ),
+            ElevatedButton(
+              onPressed: _incrementCounter,
+              child: const Text('Add Number'),
+            ),
+            const SizedBox(height: 20),
 
             // Dialog Widget
-            Card(
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  children: [
-                    const Text(
-                      '4. Dialog Widget:',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    const SizedBox(height: 10),
-                    ElevatedButton(
-                      child: const Text('Show Alert Dialog'),
-                      onPressed: () {
-                        showAlertDialog(context);
-                      },
-                    ),
-                  ],
-                ),
-              ),
+            const Text(
+              'Dialog Widget:',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
             ),
-            const SizedBox(height: 16),
-
-            // Input Widget
-            const Card(
-              child: Padding(
-                padding: EdgeInsets.all(16.0),
-                child: Column(
-                  children: [
-                    Text(
-                      '5. Input Widget:',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(height: 10),
-                    TextField(
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Nama',
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+            ElevatedButton(
+              child: const Text('Show Dialog'),
+              onPressed: () {
+                showAlertDialog(context);
+              },
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 20),
 
             // Date Picker Widget
-            Card(
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  children: [
-                    const Text(
-                      '6. Date Picker Widget:',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    const SizedBox(height: 10),
-                    Text(
-                      "Selected Date: ${selectedDate.toLocal()}".split(' ')[0],
-                    ),
-                    const SizedBox(height: 10),
-                    ElevatedButton(
-                      onPressed: () => _selectDate(context),
-                      child: const Text('Pilih Tanggal'),
-                    ),
-                  ],
-                ),
-              ),
+            const Text(
+              'Date Picker Widget:',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+            ),
+            Text("Date: ${selectedDate.toLocal()}".split(' ')[0]),
+            ElevatedButton(
+              onPressed: () => _selectDate(context),
+              child: const Text('Pick Date'),
             ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        backgroundColor: Colors.pink,
-        child: const Icon(Icons.thumb_up),
+        tooltip: 'Add',
+        backgroundColor: Colors.blue,
+        child: const Icon(Icons.add),
       ),
     );
   }

@@ -99,7 +99,7 @@ class LayoutBasicsDemo extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            // Kolom 1: Persiapan
+            // Kolom 1: Waktu persiapan
             Column(
               children: [
                 Icon(Icons.kitchen, color: Colors.green[500]),

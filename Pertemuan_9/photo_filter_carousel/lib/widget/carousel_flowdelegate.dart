@@ -1,5 +1,7 @@
-import 'package:flutter/rendering.dart';
 import 'dart:math' as math;
+
+import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart' show ViewportOffset;
 
 class CarouselFlowDelegate extends FlowDelegate {
   CarouselFlowDelegate({
@@ -44,11 +46,11 @@ class CarouselFlowDelegate extends FlowDelegate {
       final opacity = 0.25 + (percentFromCenter * 0.75);
 
       final itemTransform = Matrix4.identity()
-        ..translateByDouble((size - itemExtent) / 2, 0, 0, 0)
-        ..translateByDouble(itemXFromCenter, 0, 0, 0)
-        ..translateByDouble(itemExtent / 2, itemExtent / 2, 0, 0)
+        ..translate((size - itemExtent) / 2)
+        ..translate(itemXFromCenter)
+        ..translate(itemExtent / 2, itemExtent / 2)
         ..multiply(Matrix4.diagonal3Values(itemScale, itemScale, 1.0))
-        ..translateByDouble(-itemExtent / 2, -itemExtent / 2, 0, 0);
+        ..translate(-itemExtent / 2, -itemExtent / 2);
 
       context.paintChild(index, transform: itemTransform, opacity: opacity);
     }
